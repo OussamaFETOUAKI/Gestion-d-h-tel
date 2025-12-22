@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hotelfx.controller.InvoiceController">
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #eee; -fx-padding: 10;" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#backToMain" text="&lt; Retour" />
+            <Label text="Facturation">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Sélectionner une réservation à facturer :" />
+            <ComboBox fx:id="cbReservation" prefWidth="300.0" promptText="-- Réservations en attente --" />
+            <HBox alignment="CENTER" spacing="10.0">
+               <children>
+                  <Label text="Montant Total :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblTotal" text="0.00 €" textFill="#2c8900">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Button fx:id="btnGenerate" disable="true" mnemonicParsing="false" onAction="#generateInvoice" style="-fx-font-size: 14;" text="Générer Facture" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
