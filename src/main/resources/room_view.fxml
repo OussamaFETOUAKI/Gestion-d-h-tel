@@ -1,58 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hotelfx.controller.RoomController">
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.hotelfx.controller.ReservationController"
+            style="-fx-background-color: #f3f4f6;">
+
+   <!-- ===== TOP BAR ===== -->
    <top>
-      <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #eee; -fx-padding: 10;" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#backToMain" text="&lt; Retour" />
-            <Label text="Gestion des Chambres">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
+      <HBox spacing="14"
+            alignment="CENTER_LEFT"
+            style="
+                -fx-padding: 16;
+                -fx-background-color: white;
+                -fx-border-color: #e5e7eb;
+                -fx-border-width: 0 0 1 0;">
+
+         <Button text="←"
+                 onAction="#backToMain"
+                 style="
+                      -fx-background-color: transparent;
+                      -fx-font-size: 16;
+                      -fx-cursor: hand;"/>
+
+         <Label text="Gestion des réservations"
+                style="
+                     -fx-font-size: 18;
+                     -fx-font-weight: bold;"/>
       </HBox>
    </top>
+
+   <!-- ===== TABLE CARD ===== -->
    <center>
-      <TableView fx:id="roomTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="colId" prefWidth="50.0" text="ID" />
-          <TableColumn fx:id="colNumero" prefWidth="100.0" text="Numéro" />
-            <TableColumn fx:id="colType" prefWidth="150.0" text="Type" />
-            <TableColumn fx:id="colTarif" prefWidth="100.0" text="Tarif" />
-        </columns>
-      </TableView>
+      <VBox style="-fx-padding: 18;">
+         <VBox style="
+                    -fx-background-color: white;
+                    -fx-background-radius: 12;
+                    -fx-padding: 12;
+                    -fx-border-color: #e5e7eb;
+                    -fx-border-radius: 12;">
+
+            <TableView fx:id="reservationTable"
+                       VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: transparent;">
+
+               <columns>
+                  <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                  <TableColumn fx:id="colChambre" text="Chambre" prefWidth="140"/>
+                  <TableColumn fx:id="colClient" text="Client" prefWidth="210"/>
+                  <TableColumn fx:id="colDebut" text="Début" prefWidth="120"/>
+                  <TableColumn fx:id="colFin" text="Fin" prefWidth="120"/>
+                  <TableColumn fx:id="colStatut" text="Statut" prefWidth="120"/>
+               </columns>
+            </TableView>
+
+         </VBox>
+      </VBox>
    </center>
+
+   <!-- ===== FORM CARD ===== -->
    <bottom>
-      <VBox spacing="10.0" style="-fx-padding: 10;" BorderPane.alignment="CENTER">
-         <children>
-            <HBox spacing="10.0">
-               <children>
-                  <TextField fx:id="txtNumero" promptText="Numéro de chambre" />
-                  <ComboBox fx:id="cbType" promptText="Type" />
-                  <TextField fx:id="txtTarif" promptText="Tarif" />
-               </children>
+      <VBox style="-fx-padding: 18;">
+         <VBox spacing="16"
+               style="
+                    -fx-background-color: white;
+                    -fx-background-radius: 12;
+                    -fx-padding: 18;
+                    -fx-border-color: #e5e7eb;
+                    -fx-border-radius: 12;">
+
+            <HBox spacing="14">
+               <ComboBox fx:id="cbChambre"
+                         promptText="Chambre"
+                         style="-fx-pref-width: 220;"/>
+
+               <ComboBox fx:id="cbClient"
+                         promptText="Client"
+                         style="-fx-pref-width: 220;"/>
             </HBox>
-            <HBox spacing="10.0">
-               <children>
-                  <Button fx:id="btnSave" mnemonicParsing="false" onAction="#saveRoom" text="Ajouter" />
-                  <Button mnemonicParsing="false" onAction="#deleteRoom" text="Supprimer" />
-                  <Button mnemonicParsing="false" onAction="#clearForm" text="Nouveau" />
-               </children>
+
+            <HBox spacing="14">
+               <DatePicker fx:id="dpDebut" promptText="Date de début"/>
+               <DatePicker fx:id="dpFin" promptText="Date de fin"/>
             </HBox>
-         </children>
+
+            <HBox spacing="12" alignment="CENTER_RIGHT">
+               <Button text="Nouveau"
+                       onAction="#clearForm"
+                       style="
+                              -fx-background-color: #e5e7eb;
+                              -fx-cursor: hand;"/>
+
+               <Button text="Annuler séjour"
+                       onAction="#cancelReservation"
+                       style="
+                              -fx-background-color: #ef4444;
+                              -fx-text-fill: white;
+                              -fx-cursor: hand;"/>
+
+               <Button fx:id="btnSave"
+                       text="Réserver"
+                       onAction="#saveReservation"
+                       style="
+                              -fx-background-color: #2563eb;
+                              -fx-text-fill: white;
+                              -fx-font-weight: bold;
+                              -fx-padding: 8 18;
+                              -fx-cursor: hand;"/>
+            </HBox>
+
+         </VBox>
       </VBox>
    </bottom>
+
 </BorderPane>

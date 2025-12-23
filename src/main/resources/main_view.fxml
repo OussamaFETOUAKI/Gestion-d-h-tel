@@ -1,37 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hotelfx.controller.MainController">
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.hotelfx.controller.MainController"
+            style="-fx-background-color: #f3f4f6;">
+
+   <!-- ===== SIDEBAR ===== -->
    <left>
-      <VBox spacing="10.0" style="-fx-background-color: #333; -fx-padding: 20;" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="HotelFX" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-            <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#showRooms" text="Chambres" />
-            <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#showClients" text="Clients" />
-            <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#showReservations" text="Réservations" />
-            <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#showInvoices" text="Facturation" />
-         </children>
+      <VBox spacing="16"
+            prefWidth="220"
+            style="
+                -fx-background-color: #111827;
+                -fx-padding: 24;">
+
+         <!-- APP NAME -->
+         <Label text="HotelFX"
+                style="
+                     -fx-text-fill: white;
+                     -fx-font-size: 24;
+                     -fx-font-weight: bold;"/>
+
+         <Separator style="-fx-background-color: #374151;"/>
+
+         <!-- MENU ITEM (ACTIVE) -->
+         <Button text="🏠  Accueil"
+                 maxWidth="Infinity"
+                 style="
+                      -fx-background-color: #1f2937;
+                      -fx-text-fill: white;
+                      -fx-font-size: 14;
+                      -fx-alignment: CENTER_LEFT;
+                      -fx-padding: 10 14;
+                      -fx-background-radius: 6;"/>
+
+         <!-- MENU ITEMS -->
+         <Button text="🏨  Chambres"
+                 maxWidth="Infinity"
+                 onAction="#showRooms"
+                 style="
+                      -fx-background-color: transparent;
+                      -fx-text-fill: #e5e7eb;
+                      -fx-font-size: 14;
+                      -fx-alignment: CENTER_LEFT;
+                      -fx-padding: 10 14;"/>
+
+         <Button text="👤  Clients"
+                 maxWidth="Infinity"
+                 onAction="#showClients"
+                 style="
+                      -fx-background-color: transparent;
+                      -fx-text-fill: #e5e7eb;
+                      -fx-font-size: 14;
+                      -fx-alignment: CENTER_LEFT;
+                      -fx-padding: 10 14;"/>
+
+         <Button text="📅  Réservations"
+                 maxWidth="Infinity"
+                 onAction="#showReservations"
+                 style="
+                      -fx-background-color: transparent;
+                      -fx-text-fill: #e5e7eb;
+                      -fx-font-size: 14;
+                      -fx-alignment: CENTER_LEFT;
+                      -fx-padding: 10 14;"/>
+
+         <Button text="💳  Facturation"
+                 maxWidth="Infinity"
+                 onAction="#showInvoices"
+                 style="
+                      -fx-background-color: transparent;
+                      -fx-text-fill: #e5e7eb;
+                      -fx-font-size: 14;
+                      -fx-alignment: CENTER_LEFT;
+                      -fx-padding: 10 14;"/>
+
+         <Region VBox.vgrow="ALWAYS"/>
+
       </VBox>
    </left>
+
+   <!-- ===== MAIN CONTENT ===== -->
    <center>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Bienvenue dans HotelFX">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label text="Sélectionnez un menu à gauche pour commencer." />
-         </children>
+      <VBox spacing="14"
+            alignment="CENTER"
+            style="-fx-padding: 40;">
+
+         <Label text="Bienvenue dans HotelFX"
+                style="
+                     -fx-font-size: 28;
+                     -fx-font-weight: bold;"/>
+
+         <Label text="Sélectionnez une section depuis le menu pour commencer"
+                style="
+                     -fx-text-fill: #6b7280;
+                     -fx-font-size: 14;"/>
       </VBox>
    </center>
+
 </BorderPane>
